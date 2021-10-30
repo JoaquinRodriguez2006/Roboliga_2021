@@ -35,7 +35,6 @@ s0.enable(timeStep)
 s2.enable(timeStep)
 start = robot.getTime()
 
-
 def avanzar(vel):
     speed1 = vel
     speed2 = vel
@@ -53,23 +52,18 @@ def quieto():
     speed2 = nothing
 
 while robot.step(timeStep) != -1:
-    speed1 = max_velocity
-    speed2 = max_velocity
     w = encoderderecho.getValue()
-    b = w
-    if w<rotacion:
-        print("avanzar")
-        speed1 = -max_velocity
+    print(w)
+    if (s7.getValue() > 0.1 and s0.getValue() > 0.1): # Pregunta si ve algo con alguno de los sensores de adelante. En ese caso, avanza.
+        speed1 = max_velocity
         speed2 = max_velocity
-        if w >= rotacion:
-            time.sleep(10)
-
-    """if (s7.getValue() > 0.1 and s0.getValue() > 0.1): # Pregunta si ve algo con alguno de los sensores de adelante. En ese caso, avanza.
-        avanzar(max_velocity)
         print("avanzar")
     else:
-        turn_left_on_place()
-        print("derecha")"""
+        if w<rotacion:
+            print("avanzar")
+            speed1 = -max_velocity
+            speed2 = max_velocity
+            print("izquierda")
 
     
     # if (s7.getValue() < 0.1 and s0.getValue() < 0.1): # Si detecta algo con los sensores de adelante, pregunta si ve algo con los sensores de los costados

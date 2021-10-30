@@ -30,6 +30,7 @@ while robot.step(timeStep) != -1:
     speed1 = max_velocity
     speed2 = max_velocity
     vel = 0
+
     def turn_left_on_place(motors, smoothness_factor = 10):
         #right motors
         wheel1.setVelocity(vel/smoothness_factor)
