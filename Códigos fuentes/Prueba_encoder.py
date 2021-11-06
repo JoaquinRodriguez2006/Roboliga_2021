@@ -67,12 +67,17 @@ def quieto():
 
 def rotar(angulo):
     global angulo_actual
+    global speed1
+    global speed2
     print("Empieza el giro")
     tiempo_anterior = 0
     #  iniciar_rotacion
-    girar_derecha(max_velocity)
+    speed1 = max_velocity
+    speed2 = -max_velocity
     # Mientras no llego al angulo solicitado sigo girando con una precision de 1 grado 
     while (abs(angulo - angulo_actual) > 1):
+        speed1 = max_velocity
+        speed2 = -max_velocity
         tiempo_actual = robot.getTime()
         # print("Inicio rotacion angulo", angulo, "Angulo actual:",angulo_actual)
         tiempo_transcurrido = tiempo_actual - tiempo_anterior  # tiempo que paso en cada timestep
